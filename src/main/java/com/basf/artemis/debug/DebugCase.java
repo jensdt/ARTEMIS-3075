@@ -7,7 +7,7 @@ import javax.jms.*;
 
 public class DebugCase {
     public static void main(String[] args) throws Exception {
-        // Instantiate connection towards server 0
+        // Instantiate connection towards server 2 (61617)
         ConnectionFactory cf0 = new ActiveMQConnectionFactory("tcp://localhost:61617");
         Queue queue = ActiveMQJMSClient.createQueue("exampleQueue");
 
@@ -15,6 +15,7 @@ public class DebugCase {
             createConsumer(cf0, queue);
         }
 
+        // Don't do anything - you should now trigger the failure case by shutting down server 2
         while (true) {
             Thread.sleep(1000);
         }
