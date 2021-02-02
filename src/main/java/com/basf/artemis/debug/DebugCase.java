@@ -22,13 +22,10 @@ public class DebugCase {
     }
 
     private static void createConsumer(ConnectionFactory cf0, Queue queue) throws JMSException {
-        final Connection connection0 = cf0.createConnection();
-
-        // Step 8. We create a JMS Session on server 0
+        Connection connection0 = cf0.createConnection();
         Session session0 = connection0.createSession(false, Session.AUTO_ACKNOWLEDGE);
+        
         session0.createConsumer(queue);
-
-        // Step 10. We start the connections to ensure delivery occurs on them
         connection0.start();
     }
 
